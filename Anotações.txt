@@ -1,0 +1,18 @@
+Projeto Prático de Modelagem de Dados + Criação de Um Banco de Dados:
+
+1) Introdução:
+
+    - No projeto prático, devemos modelar um banco de dados de uma "LOCADORA DE CARROS";
+
+2) Processos da Modelagem de Dados:
+
+    - Para podermos fazer a Modelagem de Dados, precisaremos seguir as seguintes etapas:
+
+        . a) Entendimento do Problema;
+        . b) Modelo Entidade-Relacionamento (MER);
+        . c) Diagrama Entidade-Relacionamento (DER);
+        . d) Definição das Cardinalidades;
+        . e) Definição do Modelo Lógico;
+        . f) Normalização das tabelas;
+        . g) Dicionário de Dados;
+        . h) Implementação do Modelo Físico; 

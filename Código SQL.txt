@@ -1,0 +1,69 @@
+-- Projeto de Modelagem + Criação do Banco de Dados (Locadora_Carros):
+
+-- Criando o Banco de Dados:
+CREATE DATABASE Locadora_Carros;
+
+-- Criando a Tabela "Cliente":
+CREATE TABLE Cliente (
+	CNH VARCHAR(100) NOT NULL,
+    Nome VARCHAR(100) NOT NULL,
+    Cartão INT NOT NULL,
+    Telefone VARCHAR(100) NOT NULL,
+    PRIMARY KEY(CNH)
+);
+
+-- Adicionando alguns dados na tabela "Cliente":
+INSERT INTO Cliente(CNH, Nome, Cartão, Telefone) VALUES ('999999', 'Pedro', 123, '1111-1111');
+INSERT INTO Cliente(CNH, Nome, Cartão, Telefone) VALUES ('888888', 'Osvaldo', 112, '2222-2222');
+INSERT INTO Cliente(CNH, Nome, Cartão, Telefone) VALUES ('777777', 'Claudia', 133, '3333-3333');
+
+-- Criando a Tabela "Agência":
+CREATE TABLE Agência (
+	Num_agência INT NOT NULL,
+	Rua VARCHAR(100) NOT NULL,
+	Cidade VARCHAR(100) NOT NULL,
+    Estado VARCHAR(100) NOT NULL,
+    Contato VARCHAR(100) NOT NULL,
+    PRIMARY KEY(Num_agência)
+);
+
+-- Adicionando alguns dados na tabela "Agência":
+INSERT INTO Agência(Num_agência, Rua, Cidade, Estado, Contato) VALUES (15, 'Rua Antônio Soares da Costa', 'Juiz de Fora', 'MG', '9999-9999');
+INSERT INTO Agência(Num_agência, Rua, Cidade, Estado, Contato) VALUES (30, 'Rua Francisco Bernardino', 'Juiz de Fora', 'MG', '8888-8888');
+INSERT INTO Agência(Num_agência, Rua, Cidade, Estado, Contato) VALUES (45, 'Padre Café', 'Juiz de Fora', 'MG', '7777-7777');
+
+-- Criando a Tabela "Carro":
+CREATE TABLE Carro (
+	Placa VARCHAR(100) NOT NULL,
+	Modelo VARCHAR(100) NOT NULL,
+	Ano INT NOT NULL,
+    Num_agência INT NOT NULL,
+    PRIMARY KEY(Placa),
+    FOREIGN KEY(Num_agência) REFERENCES Agência(Num_agência)
+);
+
+-- Adicionando alguns dados na tabela "Carro":
+INSERT INTO Carro(Placa, Modelo, Ano, Num_agência) VALUES ('DNV-1300', 'Honda', 2016, 30);
+INSERT INTO Carro(Placa, Modelo, Ano, Num_agência) VALUES ('AVG-1999', 'Ônix', 2015, 15);
+INSERT INTO Carro(Placa, Modelo, Ano, Num_agência) VALUES ('FRA-3003', 'Fiat', 2020, 45);
+
+-- Criando a Tabela "Aluguel":
+CREATE TABLE Aluguel (
+	Data DATE NOT NULL,
+	CNH VARCHAR(100) NOT NULL,
+	Placa VARCHAR(100) NOT NULL,
+    PRIMARY KEY(Placa),
+    FOREIGN KEY(CNH) REFERENCES Cliente(CNH),
+    FOREIGN KEY(Placa) REFERENCES Carro(Placa)
+);
+
+-- Adicionando alguns dados na tabela "Aluguel":
+INSERT INTO Aluguel(Data, CNH, Placa) VALUES ('1999-09-13', '999999', 'AVG-1999');
+INSERT INTO Aluguel(Data, CNH, Placa) VALUES ('1968-02-28', '777777', 'DNV-1300');
+INSERT INTO Aluguel(Data, CNH, Placa) VALUES ('1960-12-24', '888888', 'FRA-3003');
+
+-- Selecionando todos os registros da Tabelas:
+SELECT * FROM Cliente;
+SELECT * FROM Carro;
+SELECT * FROM Agência;
+SELECT * FROM Aluguel;
