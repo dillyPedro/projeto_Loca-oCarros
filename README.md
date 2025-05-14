@@ -1,4 +1,5 @@
-# projeto_Loca-oCarros
+# projeto_LocadoraCarros:
+
 Esta atividade envolve modelagem de dados para uma locadora de carros, com:  
 
   - Entidades: Cliente, Carro, Agência, Aluguel;
